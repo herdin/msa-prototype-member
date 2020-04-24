@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 4
+
+mybatis:
+  type-aliases-package: com.jsm.dto.model
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: com/jsm/mapper/**/*.xml
+
+
+logging:
+  level:
+    root: INFO
+    com:
+      jsm : DEBUG
