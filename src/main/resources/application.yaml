@@ -12,6 +12,6 @@ mybatis:
 
 logging:
   level:
-    root: INFO
+    root: DEBUG
     com:
       jsm : DEBUG
