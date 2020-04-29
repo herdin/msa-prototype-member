@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sun.jvm.hotspot.debugger.linux.aarch64.LinuxAARCH64CFrame;
 
 import java.util.List;
 
@@ -23,10 +24,14 @@ public class MemberController {
 
     // 전체회원목록조회
     @GetMapping("/member")
-    public List<MemberModel> readMemberList(){
+    public ResponseEntity<List<MemberModel>> readMemberList(){
         List<MemberModel> list = memberService.readMemberList();
 
-        return list;
+        if(list == null){
+            return ResponseEntity.badRequest().body(list);
+        }
+
+        return ResponseEntity.ok().body(list);
     }
 
     // 특정회원조회

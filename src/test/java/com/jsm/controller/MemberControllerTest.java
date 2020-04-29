@@ -23,12 +23,21 @@ public class MemberControllerTest {
     @Autowired
     MockMvc mockMvc;
 
-    // 전체회원목록조회
+    // 전체회원목록조회(정상)
     @Test
-    public void readMemberList() throws Exception{
+    public void 전체회원목록조회_정상() throws Exception{
         mockMvc.perform(MockMvcRequestBuilders.get("/member"))
                 .andDo(print())
                 .andExpect(status().isOk())
+        ;
+    }
+
+    // 전체회원목록조회(비정상)
+    @Test
+    public void 전체회원목록조회_비정상() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/member"))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
         ;
     }
 

@@ -6,7 +6,7 @@ import org.apache.ibatis.type.Alias;
 public class MemberModel {
     private int userid;
     private String username;
-
+    public MemberModel(){}
     public MemberModel(int userid, String userName) {
         this.userid = userid;
         this.username = userName;
