@@ -54,4 +54,4 @@ phases:
 
 cache:
   paths:
-    - '/root/.gradle/caches/**/*'
+    - '.gradle/caches/**/*'
