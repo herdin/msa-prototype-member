@@ -1,21 +1,13 @@
 package com.jsm.service;
 
 import com.jsm.dto.model.MemberModel;
-import com.jsm.mapper.MemberMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class MemberService {
-    @Autowired
-    MemberMapper memberMapper;
-    public int readMaxMemberId(){
-        return memberMapper.readMaxMemberId();
-    }
+import java.util.List;
 
-    public boolean addMember(MemberModel memberModel) {
-        memberMapper.addMember(memberModel);
+public interface MemberService {
+    // 전체회원목록조회
+    public List<MemberModel> readMemberList();
 
-        return true;
-    }
+    // 특정회원조회
+    public MemberModel readMemberInfo(int userid);
 }

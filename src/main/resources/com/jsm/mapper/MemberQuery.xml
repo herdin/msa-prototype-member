@@ -6,14 +6,14 @@
       from member
     </select>
 
-    <select id="readAllMemberInfo" resultType="Member">
+    <select id="readMemberList" resultType="Member">
       select
           userid
         , username
       from member where 1=1
     </select>
 
-    <select id="readMemberInfo">
+    <select id="readMemberInfo" resultType="Member">
       select
           userid
         , username

@@ -17,6 +17,7 @@ public class PostgreRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         logger.debug("hello {}", "Jang");
-        logger.debug("read all member info -> {}", memberMapper.readAllMemberInfo());
+        //logger.debug("read all member info -> {}", memberMapper.readAllMemberInfo());
+        logger.debug("read all member info -> {}", memberMapper.readMemberList());
     }
 }

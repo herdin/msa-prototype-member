@@ -23,8 +23,18 @@ public class MemberControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    // 전체회원목록조회
     @Test
-    public void getUser() throws Exception{
+    public void readMemberList() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/member"))
+                .andDo(print())
+                .andExpect(status().isOk())
+        ;
+    }
+
+    // 특정회원조회
+    @Test
+    public void readMemberInfo() throws Exception {
         int userid = 1;
         mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userid))
                 .andDo(print())
