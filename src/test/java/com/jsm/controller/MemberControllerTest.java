@@ -1,5 +1,6 @@
 package com.jsm.controller;
 
+import com.jsm.dto.model.MemberModel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,26 +27,49 @@ public class MemberControllerTest {
     // 전체회원목록조회(정상)
     @Test
     public void 전체회원목록조회_정상() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/member"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/memberList"))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
     }
 
     // 전체회원목록조회(비정상)
-    @Test
+    /*@Test
     public void 전체회원목록조회_비정상() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/member"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/memberList"))
                 .andDo(print())
                 .andExpect(status().isBadRequest())
         ;
-    }
+    }*/
 
-    // 특정회원조회
+    // 특정회원조회_정상
     @Test
-    public void readMemberInfo() throws Exception {
+    public void 특정회원조회_정상() throws Exception {
         int userid = 1;
         mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userid))
+                .andDo(print())
+                .andExpect(status().isOk())
+        ;
+    }
+
+    // 특정회원조회_비정상
+    /*@Test
+    public void 특정회원조회_비정상() throws Exception {
+        int userid = 2;
+        mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userid))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+        ;
+    }*/
+
+    // 회원가입
+    @Test
+    public void addMember() throws Exception {
+        MemberModel memberModel = new MemberModel();
+        memberModel.setUserid(2);
+        memberModel.setUsername("Jo");
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/member/add" + memberModel))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;

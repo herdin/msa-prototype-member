@@ -1,3 +1,6 @@
+server:
+  port: 8090
+
 spring:
   datasource:
     hikari:
@@ -9,9 +12,14 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: com/jsm/mapper/**/*.xml
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
 
 logging:
   level:
-    root: DEBUG
+    root: INFO
     com:
       jsm : DEBUG

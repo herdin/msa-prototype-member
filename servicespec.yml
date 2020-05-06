@@ -1,0 +1,22 @@
+- 회원정보조회:
+    1. url : GET /member
+    2. 파라미터 : userid
+    3. 리턴 : userid
+             username
+
+- 회원등록:
+    1. url : PUT /member
+    2. 파라미터 : userid
+                username
+    3. 리턴 : CNT(성공건수)
+
+- 회원수정:
+    1. url : POST /member
+    2. 파라미터 : userid
+    3. 리턴 : cnt(성공건수)
+
+- 회원삭제:
+    1. url : DELETE /member
+    2. 파라미터 : userid
+    3. 리턴 : cnt(성공건수)
+
