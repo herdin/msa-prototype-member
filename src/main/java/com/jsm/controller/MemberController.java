@@ -18,7 +18,8 @@ public class MemberController {
     MemberService memberService;
 
     // 회원조회
-    /*@GetMapping("/member")
+    /*@CrossOrigin
+    @GetMapping("/member")
     public ResponseEntity<List<MemberModel>> readMemberList(){
         List<MemberModel> list = memberService.readMemberList();
 
@@ -30,6 +31,7 @@ public class MemberController {
     }*/
 
     // 특정회원조회
+    @CrossOrigin
     @GetMapping("/member/{userId}")
     public MemberModel getMember(@PathVariable String userId){
         MemberModel memberModel = memberService.getMember(userId);
@@ -37,6 +39,7 @@ public class MemberController {
     }
 
     // 회원등록
+    @CrossOrigin
     @PutMapping("/member")
     public ResponseEntity<Integer> addMember(@RequestBody MemberModel memberModel ){
         int cnt = memberService.addMember(memberModel);
@@ -49,6 +52,7 @@ public class MemberController {
     }
 
     // 회원수정
+    @CrossOrigin
     @PostMapping("/member")
     public ResponseEntity<Integer> updateMember(@RequestBody MemberModel memberModel ){
         int cnt = memberService.updateMember(memberModel);
@@ -61,6 +65,7 @@ public class MemberController {
     }
 
     // 회원삭제
+    @CrossOrigin
     @DeleteMapping("/member")
     public ResponseEntity<Integer> deleteMember(@RequestBody String userId){
         int cnt = memberService.deleteMember(userId);
