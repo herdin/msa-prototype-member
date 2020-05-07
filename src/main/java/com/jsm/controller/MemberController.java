@@ -19,7 +19,7 @@ public class MemberController {
     @Autowired
     MemberService memberService;
 
-    // 전체회원목록조회
+    // 회원조회
     @GetMapping("/member")
     public ResponseEntity<List<MemberModel>> readMemberList(){
         List<MemberModel> list = memberService.readMemberList();
@@ -32,18 +32,18 @@ public class MemberController {
     }
 
     // 특정회원조회
-    @GetMapping("/member/{userId}")
+    /*@GetMapping("/member/{userId}")
     public MemberModel readMemberInfo(@PathVariable int userId){
         MemberModel memberModel = memberService.readMemberInfo(userId);
         return memberModel;
-    }
+    }*/
 
     // 회원등록
     @PutMapping("/member")
-    public ResponseEntity<Integer> addMember(@PathVariable MemberModel memberModel ){
+    public ResponseEntity<Integer> addMember(@RequestBody MemberModel memberModel ){
         int cnt = memberService.addMember(memberModel);
 
-        if(cnt == 0){
+        if(cnt != 0){
             return ResponseEntity.ok(cnt);
         }else{
             return ResponseEntity.badRequest().body(cnt);
@@ -52,10 +52,10 @@ public class MemberController {
 
     // 회원수정
     @PostMapping("/member")
-    public ResponseEntity<Integer> updateMember(@PathVariable MemberModel memberModel ){
+    public ResponseEntity<Integer> updateMember(@RequestBody MemberModel memberModel ){
         int cnt = memberService.updateMember(memberModel);
 
-        if(cnt == 0){
+        if(cnt != 0){
             return ResponseEntity.ok(cnt);
         }else{
             return ResponseEntity.badRequest().body(cnt);
@@ -63,11 +63,11 @@ public class MemberController {
     }
 
     // 회원삭제
-    @PostMapping("/member")
-    public ResponseEntity<Integer> deleteMember(@PathVariable int userId ){
+    @DeleteMapping("/member")
+    public ResponseEntity<Integer> deleteMember(@RequestBody int userId){
         int cnt = memberService.deleteMember(userId);
 
-        if(cnt == 0){
+        if(cnt != 0){
             return ResponseEntity.ok(cnt);
         }else{
             return ResponseEntity.badRequest().body(cnt);

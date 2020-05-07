@@ -4,35 +4,48 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("Member")
 public class MemberModel {
-    private int userid;
-    private String username;
-    public MemberModel(){}
-    public MemberModel(int userid, String userName) {
-        this.userid = userid;
-        this.username = userName;
+    private int userId;
+    private String userName;
+    private String useYn;
+
+    public MemberModel(){};
+
+    public MemberModel(int userId, String userName, String useYn) {
+        this.userId = userId;
+        this.userName = userName;
+        this.useYn = useYn;
     }
 
-    public int getUserid() {
-        return userid;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUseYn() {
+        return useYn;
+    }
+
+    public void setUseYn(String useYn) {
+        this.useYn = useYn;
     }
 
     @Override
     public String toString() {
         return "MemberModel{" +
-                "userid=" + userid +
-                ", username='" + username + '\'' +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", useYn='" + useYn + '\'' +
                 '}';
     }
 }

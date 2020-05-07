@@ -14,7 +14,7 @@ public interface MemberMapper {
     List<MemberModel> readMemberList();
 
     // 특정회원조회
-    MemberModel readMemberInfo(int userId);
+    //MemberModel readMemberInfo(int userId);
 
     // userid MAX 값 구하기
     int readMaxMemberId(int userId);

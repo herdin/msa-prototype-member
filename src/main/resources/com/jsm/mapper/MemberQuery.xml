@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jsm.mapper.MemberMapper">
-    <select id="readMaxMemberId" resultType="Member">
-      select nvl(max(user_id),0)+1
+    <select id="readMaxMemberId" resultType="int">
+      select nullif(max(user_id),0)+1 as maxUserId
       from member
     </select>
 
@@ -11,7 +11,8 @@
           user_id
         , user_name
         , use_yn
-      from member where 1=1
+      from member
+
     </select>
 
     <select id="readMemberInfo" resultType="Member">
@@ -19,24 +20,24 @@
           user_id
         , user_name
         , use_yn
-      from member where 1=1
-      and user_id = #{userId}
+      from member
+      where user_id = #{userId}
     </select>
 
     <insert id="addMember">
       insert into member
-      values(#{userId}, #{userName}, 'Y')
+      values(#{userId}, #{userName}, #{useYn})
     </insert>
 
     <update id="updateMember">
       update member
-      set user_name = {userName}
-      where user_id = {userId}
+      set user_name = #{userName}
+      where user_id = #{userId}
     </update>
 
     <update id="deleteMember">
         update member
         set use_yn = 'N'
-        where user_id = {userId}
+        where user_id = #{userId}
     </update>
 </mapper>

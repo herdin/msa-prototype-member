@@ -1,5 +1,6 @@
 package com.jsm.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jsm.dto.model.MemberModel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -24,10 +26,18 @@ public class MemberControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     // 전체회원목록조회(정상)
     @Test
     public void 전체회원목록조회_정상() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.get("/memberList"))
+        int userId = 1000000006;
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/member")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(userId))
+        )
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
@@ -43,14 +53,14 @@ public class MemberControllerTest {
     }*/
 
     // 특정회원조회_정상
-    @Test
+    /*@Test
     public void 특정회원조회_정상() throws Exception {
         int userid = 1;
         mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userid))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
-    }
+    }*/
 
     // 특정회원조회_비정상
     /*@Test
@@ -66,10 +76,45 @@ public class MemberControllerTest {
     @Test
     public void addMember() throws Exception {
         MemberModel memberModel = new MemberModel();
-        memberModel.setUserid(2);
-        memberModel.setUsername("Jo");
+        memberModel.setUserId(2000000000);
+        memberModel.setUserName("Jo");
+        memberModel.setUseYn("Y");
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/member/add" + memberModel))
+        mockMvc.perform(MockMvcRequestBuilders.put("/member")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(memberModel))
+        )
+                .andDo(print())
+                .andExpect(status().isOk())
+        ;
+    }
+
+    // 회원수정
+    @Test
+    public void updateMember() throws Exception {
+        MemberModel memberModel = new MemberModel();
+        memberModel.setUserId(1000000003);
+        memberModel.setUserName("Joa");
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/member")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(memberModel))
+        )
+                .andDo(print())
+                .andExpect(status().isOk())
+        ;
+    }
+
+    @Test
+    public void deleteMember() throws Exception {
+        /*MemberModel memberModel = new MemberModel();
+        memberModel.setUserId(1000000006);*/
+        int userId = 1000000006;
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/member")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(userId))
+        )
                 .andDo(print())
                 .andExpect(status().isOk())
         ;

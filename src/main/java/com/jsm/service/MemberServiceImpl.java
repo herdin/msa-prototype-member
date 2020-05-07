@@ -19,15 +19,15 @@ public class MemberServiceImpl implements MemberService{
     }
 
     // 특정회원조회
-    public MemberModel readMemberInfo(int userid) {
+    /*public MemberModel readMemberInfo(int userid) {
         return memberMapper.readMemberInfo(userid);
-    }
+    }*/
 
     // 회원가입
     public int addMember(MemberModel memberModel){
         // userid MAX 값 구하기
-        int maxUserid = memberMapper.readMaxMemberId(memberModel.getUserid());
-        memberModel.setUserid(maxUserid);
+        int maxUserId = memberMapper.readMaxMemberId(memberModel.getUserId());
+        memberModel.setUserId(maxUserId);
 
         return memberMapper.addMember(memberModel);
     }
