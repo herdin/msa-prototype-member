@@ -11,13 +11,10 @@ import java.util.List;
 @Repository
 public interface MemberMapper {
     // 전체회원목록조회
-    List<MemberModel> readMemberList();
+    //List<MemberModel> readMemberList();
 
     // 특정회원조회
-    //MemberModel readMemberInfo(int userId);
-
-    // userid MAX 값 구하기
-    int readMaxMemberId(int userId);
+    MemberModel getMember(String userId);
 
     // 회원가입
     int addMember(MemberModel memberModel);
@@ -26,5 +23,5 @@ public interface MemberMapper {
     int updateMember(MemberModel memberModel);
 
     // 회원삭제
-    int deleteMember(int userId);
+    int deleteMember(String userId);
 }

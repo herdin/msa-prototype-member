@@ -5,10 +5,8 @@ import com.jsm.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sun.jvm.hotspot.debugger.linux.aarch64.LinuxAARCH64CFrame;
 
 import java.util.List;
 
@@ -20,7 +18,7 @@ public class MemberController {
     MemberService memberService;
 
     // 회원조회
-    @GetMapping("/member")
+    /*@GetMapping("/member")
     public ResponseEntity<List<MemberModel>> readMemberList(){
         List<MemberModel> list = memberService.readMemberList();
 
@@ -29,14 +27,14 @@ public class MemberController {
         }
 
         return ResponseEntity.ok().body(list);
-    }
+    }*/
 
     // 특정회원조회
-    /*@GetMapping("/member/{userId}")
-    public MemberModel readMemberInfo(@PathVariable int userId){
-        MemberModel memberModel = memberService.readMemberInfo(userId);
+    @GetMapping("/member/{userId}")
+    public MemberModel getMember(@PathVariable String userId){
+        MemberModel memberModel = memberService.getMember(userId);
         return memberModel;
-    }*/
+    }
 
     // 회원등록
     @PutMapping("/member")
@@ -64,7 +62,7 @@ public class MemberController {
 
     // 회원삭제
     @DeleteMapping("/member")
-    public ResponseEntity<Integer> deleteMember(@RequestBody int userId){
+    public ResponseEntity<Integer> deleteMember(@RequestBody String userId){
         int cnt = memberService.deleteMember(userId);
 
         if(cnt != 0){

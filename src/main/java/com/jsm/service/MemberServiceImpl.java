@@ -14,21 +14,17 @@ public class MemberServiceImpl implements MemberService{
     MemberMapper memberMapper;
 
     // 전체회원목록조회
-    public List<MemberModel> readMemberList(){
+    /*public List<MemberModel> readMemberList(){
         return memberMapper.readMemberList();
-    }
+    }*/
 
     // 특정회원조회
-    /*public MemberModel readMemberInfo(int userid) {
-        return memberMapper.readMemberInfo(userid);
-    }*/
+    public MemberModel getMember(String userId) {
+        return memberMapper.getMember(userId);
+    }
 
     // 회원가입
     public int addMember(MemberModel memberModel){
-        // userid MAX 값 구하기
-        int maxUserId = memberMapper.readMaxMemberId(memberModel.getUserId());
-        memberModel.setUserId(maxUserId);
-
         return memberMapper.addMember(memberModel);
     }
 
@@ -38,7 +34,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     // 회원삭제
-    public int deleteMember(int userid){
+    public int deleteMember(String userid){
         return memberMapper.deleteMember(userid);
     }
 }

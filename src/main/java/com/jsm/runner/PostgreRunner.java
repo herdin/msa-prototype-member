@@ -19,6 +19,6 @@ public class PostgreRunner implements ApplicationRunner {
         logger.debug("hello {}", "Jang");
         //logger.debug("read all member info -> {}", memberMapper.readAllMemberInfo());
         //logger.debug("read userid 1 info -> {}", memberMapper.readMemberInfo(1));
-        logger.debug("read all member info -> {}", memberMapper.readMemberList());
+        //logger.debug("read all member info -> {}", memberMapper.readMemberList());
     }
 }

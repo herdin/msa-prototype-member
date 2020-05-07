@@ -30,7 +30,7 @@ public class MemberControllerTest {
     private ObjectMapper objectMapper;
 
     // 전체회원목록조회(정상)
-    @Test
+  /*  @Test
     public void 전체회원목록조회_정상() throws Exception{
         int userId = 1000000006;
 
@@ -41,7 +41,7 @@ public class MemberControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
-    }
+    }*/
 
     // 전체회원목록조회(비정상)
     /*@Test
@@ -53,14 +53,14 @@ public class MemberControllerTest {
     }*/
 
     // 특정회원조회_정상
-    /*@Test
+    @Test
     public void 특정회원조회_정상() throws Exception {
-        int userid = 1;
-        mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userid))
+        String userId = "s.jo0701";
+        mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userId))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
-    }*/
+    }
 
     // 특정회원조회_비정상
     /*@Test
@@ -73,12 +73,14 @@ public class MemberControllerTest {
     }*/
 
     // 회원가입
-    @Test
+    /*@Test
     public void addMember() throws Exception {
         MemberModel memberModel = new MemberModel();
-        memberModel.setUserId(2000000000);
-        memberModel.setUserName("Jo");
+        memberModel.setUserId("s.jo0701");
+        memberModel.setUserName("joshin");
         memberModel.setUseYn("Y");
+        memberModel.setRgtDtm("20200504170400");
+        memberModel.setUpdDtm("20200504170400");
 
         mockMvc.perform(MockMvcRequestBuilders.put("/member")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -87,13 +89,13 @@ public class MemberControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
-    }
+    }*/
 
     // 회원수정
     @Test
     public void updateMember() throws Exception {
         MemberModel memberModel = new MemberModel();
-        memberModel.setUserId(1000000003);
+        memberModel.setUserId("sm.jang0302");
         memberModel.setUserName("Joa");
 
         mockMvc.perform(MockMvcRequestBuilders.post("/member")
@@ -108,12 +110,12 @@ public class MemberControllerTest {
     @Test
     public void deleteMember() throws Exception {
         /*MemberModel memberModel = new MemberModel();
-        memberModel.setUserId(1000000006);*/
-        int userId = 1000000006;
+        memberModel.setUserId("");*/
+        String userId = "sm.jang0302";
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/member")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(userId))
+                .content(userId)
         )
                 .andDo(print())
                 .andExpect(status().isOk())

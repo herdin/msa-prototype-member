@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface MemberService {
     // 전체회원목록조회
-    public List<MemberModel> readMemberList();
+    //public List<MemberModel> readMemberList();
 
     // 특정회원조회
-    //public MemberModel readMemberInfo(int userId);
+    public MemberModel getMember(String userId);
 
     // 회원가입
     public int addMember(MemberModel memberModel);
@@ -19,5 +19,5 @@ public interface MemberService {
     public int updateMember(MemberModel memberModel);
 
     // 회원삭제
-    public int deleteMember(int userId);
+    public int deleteMember(String userId);
 }
