@@ -27,6 +27,15 @@ public class MemberController {
 
         return ResponseEntity.ok().body(list);
     }*/
+    
+    // 로그인
+    @CrossOrigin
+    @PostMapping("/member/login/{userId}/{password}")
+    public ResponseEntity login(@PathVariable String userId, @PathVariable String password){
+        ResponseEntity res = memberService.login(userId, password);
+
+        return res;
+    }
 
     // 특정회원조회
     @CrossOrigin
@@ -39,7 +48,7 @@ public class MemberController {
     // 회원등록
     @CrossOrigin
     @PutMapping("/member")
-    public ResponseEntity<Integer> addMember(@RequestBody MemberModel memberModel ){
+    public ResponseEntity<Integer> addMember(@RequestBody MemberModel memberModel ) throws Exception {
         int cnt = memberService.addMember(memberModel);
 
         if(cnt != 0){

@@ -7,7 +7,6 @@
         , user_name
         , use_yn
       from member
-
     </select>
 
     <select id="getMember" resultType="Member">
@@ -17,6 +16,13 @@
         , use_yn
       from member
       where user_id = #{userId}
+    </select>
+
+    <select id="login" resultType="Member">
+        select
+          password
+        from member
+        where user_id = #{userId}
     </select>
 
     <insert id="addMember">

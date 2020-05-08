@@ -53,14 +53,14 @@ public class MemberControllerTest {
     }*/
 
     // 특정회원조회_정상
-    @Test
+    /*@Test
     public void 특정회원조회_정상() throws Exception {
         String userId = "s.jo0701";
         mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userId))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
-    }
+    }*/
 
     // 특정회원조회_비정상
     /*@Test
@@ -76,11 +76,12 @@ public class MemberControllerTest {
     /*@Test
     public void addMember() throws Exception {
         MemberModel memberModel = new MemberModel();
-        memberModel.setUserId("s.jo0701");
-        memberModel.setUserName("joshin");
+        memberModel.setUserId("soonmin.jang");
+        memberModel.setPassword("1q2w3e4r");
+        memberModel.setUserName("soon");
         memberModel.setUseYn("Y");
-        memberModel.setRgtDtm("20200504170400");
-        memberModel.setUpdDtm("20200504170400");
+        memberModel.setRgtDtm("20200504180400");
+        memberModel.setUpdDtm("20200504180400");
 
         mockMvc.perform(MockMvcRequestBuilders.put("/member")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -92,7 +93,7 @@ public class MemberControllerTest {
     }*/
 
     // 회원수정
-    @Test
+    /*@Test
     public void updateMember() throws Exception {
         MemberModel memberModel = new MemberModel();
         memberModel.setUserId("sm.jang0302");
@@ -105,18 +106,29 @@ public class MemberControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void deleteMember() throws Exception {
-        /*MemberModel memberModel = new MemberModel();
-        memberModel.setUserId("");*/
+        *//*MemberModel memberModel = new MemberModel();
+        memberModel.setUserId("");*//*
         String userId = "sm.jang0302";
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/member")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userId)
         )
+                .andDo(print())
+                .andExpect(status().isOk())
+        ;
+    }*/
+
+    @Test
+    public void login() throws Exception {
+        String userId = "soonmin.jang";
+        String password = "72ab994fa2eb426c051ef59cad617750bfe06d7cf6311285ff79c19c32afd236";
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/member/login/" + userId + "/" + password))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;

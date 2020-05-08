@@ -13,6 +13,9 @@ public interface MemberMapper {
     // 전체회원목록조회
     //List<MemberModel> readMemberList();
 
+    // 로그인
+    MemberModel login(String userId, String password);
+
     // 특정회원조회
     MemberModel getMember(String userId);
 
