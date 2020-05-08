@@ -40,9 +40,14 @@ public class MemberController {
     // 특정회원조회
     @CrossOrigin
     @GetMapping("/member/{userId}")
-    public MemberModel getMember(@PathVariable String userId){
+    public ResponseEntity<MemberModel> getMember(@PathVariable String userId){
         MemberModel memberModel = memberService.getMember(userId);
-        return memberModel;
+
+        if(memberModel == null){
+            ResponseEntity.badRequest().body(null);
+        }
+
+        return ResponseEntity.ok().body(memberModel);
     }
 
     // 회원등록
