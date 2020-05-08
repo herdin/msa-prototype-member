@@ -14,6 +14,8 @@
           user_id
         , user_name
         , use_yn
+        , rgt_dtm
+        , upd_dtm
       from member
       where user_id = #{userId}
     </select>
