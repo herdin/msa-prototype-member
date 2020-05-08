@@ -53,14 +53,14 @@ public class MemberControllerTest {
     }*/
 
     // 특정회원조회_정상
-    /*@Test
+    @Test
     public void 특정회원조회_정상() throws Exception {
-        String userId = "s.jo0701";
+        String userId = "s.jo0702";
         mockMvc.perform(MockMvcRequestBuilders.get("/member/" + userId))
                 .andDo(print())
                 .andExpect(status().isOk())
         ;
-    }*/
+    }
 
     // 특정회원조회_비정상
     /*@Test

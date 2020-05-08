@@ -44,7 +44,7 @@ public class MemberController {
         MemberModel memberModel = memberService.getMember(userId);
 
         if(memberModel == null){
-            ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body(null);
         }
 
         return ResponseEntity.ok().body(memberModel);
